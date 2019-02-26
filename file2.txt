@@ -1,0 +1,38 @@
+import random
+
+random.seed()
+a = ['apple', 'orange', 'tangerine', 'strawberry', 'blueberry']
+s = random.choice(a)
+print(s)
+
+k = 0
+b = []
+kol = 5
+flag = False
+while (k != len(s)) and (kol > 0):
+    k = 0
+    flag = False
+    print('Enter a letter:')
+    a = input()
+    for i in range(len(s)):
+        if (s[i] == a) and a not in b:
+            b.append(a)
+            flag = True
+    for i in range(len(s)):
+        if s[i] in b:
+            print(s[i], end="")
+            k += 1
+        else:
+            print('*', end='')
+    print('\n')
+    if k == len(s):
+        print('You won!')
+    elif (not flag) and (a not in b):
+        kol -= 1
+        print("Error! ", kol, ' of 5 chances left.')
+    elif (not flag) and (a in b):
+        print('The letter has been already found. Try another letter.')
+    if kol == 0:
+        print('You lose')
+        print('The word: "', s, '"')
+
